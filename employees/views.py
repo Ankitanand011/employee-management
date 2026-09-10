@@ -174,23 +174,23 @@ def partial_update_employee(request, id):
 
     return Response(serializer.errors, status=400)
 
-#delete employee
-@api_view(["DELETE"])
-# @permission_classes([IsAuthenticated])
-@permission_classes([isAdmin])
-def delete_employee(request, id):
+# #delete employee -> only admin staff can delete this employee
+# @api_view(["DELETE"])
+# # @permission_classes([IsAuthenticated])
+# @permission_classes([isAdmin])
+# def delete_employee(request, id):
 
-    try:
-        employee = Employee.objects.get(id=id)
-    except Employee.DoesNotExist:
-        return Response(
-            {"error": "Employee not found"},
-            status=404
-        )
+#     try:
+#         employee = Employee.objects.get(id=id)
+#     except Employee.DoesNotExist:
+#         return Response(
+#             {"error": "Employee not found"},
+#             status=404
+#         )
 
-    employee.delete()
+#     employee.delete()
 
-    return Response(
-        {"message": "Employee deleted successfully"},
-        status=204
-    )
+#     return Response(
+#         {"message": "Employee deleted successfully"},
+#         status=204
+#     )
